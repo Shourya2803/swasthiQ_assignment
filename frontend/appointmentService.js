@@ -4,7 +4,8 @@
  * Replaces mock data with real database calls via Neon PostgreSQL
  */
 
-const API_BASE_URL = 'http://localhost:8000/api';
+// Use environment variable for production, fallback to localhost for development
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 /**
  * Fetch appointments from the backend

@@ -1,0 +1,12 @@
+# Ignore Python backend files during Vercel build
+*.py
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+requirements.txt
+Procfile
+runtime.txt
+railway.toml
+.railwayignore

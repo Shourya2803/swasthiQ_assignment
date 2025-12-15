@@ -24,7 +24,13 @@ app = FastAPI(
 # CORS Configuration - Allow React frontend to communicate
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175",
+        "https://swasthiq-assignment.vercel.app",  # Add your Vercel URL here
+        "https://swasthiq-assignment-*.vercel.app"  # Allow preview deployments
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
