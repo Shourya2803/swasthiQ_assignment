@@ -352,4 +352,3 @@ For questions or issues, please contact the development team.
 
 ---
 
-**Built with ❤️ for SwasthiQ Health Systems**
