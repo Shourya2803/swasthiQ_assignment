@@ -780,18 +780,40 @@ const AppointmentManagementView = () => {
                         </div>
                       </div>
 
-                      {/* Action Buttons */}
+                      {/* Action Buttons - Status Updates */}
                       <div className="flex items-center gap-2">
-                        <button className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                          </svg>
-                        </button>
-                        <button className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                        </button>
+                        {appointment.status !== 'Confirmed' && (
+                          <button
+                            onClick={() => handleStatusUpdate(appointment.id, 'Confirmed')}
+                            className="px-3 py-1.5 text-xs font-medium text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors"
+                          >
+                            ✓ Confirm
+                          </button>
+                        )}
+                        {appointment.status !== 'Scheduled' && (
+                          <button
+                            onClick={() => handleStatusUpdate(appointment.id, 'Scheduled')}
+                            className="px-3 py-1.5 text-xs font-medium text-sky-700 bg-sky-50 hover:bg-sky-100 border border-sky-200 rounded-lg transition-colors"
+                          >
+                            📅 Reschedule
+                          </button>
+                        )}
+                        {appointment.status !== 'Completed' && compareDates(appointment.date, today) <= 0 && (
+                          <button
+                            onClick={() => handleStatusUpdate(appointment.id, 'Completed')}
+                            className="px-3 py-1.5 text-xs font-medium text-violet-700 bg-violet-50 hover:bg-violet-100 border border-violet-200 rounded-lg transition-colors"
+                          >
+                            ✓ Complete
+                          </button>
+                        )}
+                        {appointment.status !== 'Cancelled' && (
+                          <button
+                            onClick={() => handleStatusUpdate(appointment.id, 'Cancelled')}
+                            className="px-3 py-1.5 text-xs font-medium text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-lg transition-colors"
+                          >
+                            ✕ Cancel
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
